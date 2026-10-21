@@ -1,5 +1,3 @@
-Название Automation: Crypto Chart · GRAM daily
-
 Следуй скиллу в репозитории: `.cursor/skills/crypto-chart-analysis/` (файл SKILL.md).
 
 Задача при каждом запуске:
