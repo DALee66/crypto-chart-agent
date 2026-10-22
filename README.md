@@ -1,33 +1,35 @@
-# crypto-chart-agent
+# crypto-chart-agent · Decision Desk
 
-Облачный агент Cursor для разбора крипто-графиков (структура → риск → funding/OI).
+Дашборд и агентский контур для **данных к торговым решениям** на реальном рынке (Hyperliquid + газ Ethereum).
 
-Учебный фреймворк, **не** инвестиционный совет.
+Учебный инструмент, **не** инвестиционный совет.
 
-## Что внутри
-
-| Путь | Назначение |
-|------|------------|
-| `.cursor/skills/crypto-chart-analysis/` | Навык агента: `SKILL.md`, скрипт данных, справочник |
-| `automations/PROMPT.ru.md` | Готовый текст для [Cursor Automations](https://cursor.com/automations/new) |
-| `automations/SETUP.ru.md` | Как подключить Automation |
-
-## Быстрый старт (Cloud Agent)
+## Запуск UI
 
 ```bash
-python3 .cursor/skills/crypto-chart-analysis/fetch_market_context.py \
-  --symbol GRAMUSDT --market perp --venue okx --tfs 1d,4h,1h -o /tmp/crypto_ctx.json
+npm install
+npm run dev
+# http://127.0.0.1:43123
 ```
 
-Дальше в чате: «разбери GRAM» — агент следует скиллу.
+## Что на экране
 
-## Automation
+1. Операционный срез (mid / mark / oracle) по выбранной монете  
+2. Рекомендации покупки и продажи с ближайшими целями  
+3. Риск: funding, открытый интерес, премия  
+4. Издержки: газ Ethereum  
+5. Подсказки и расшифровка атрибутов  
+6. Контуры ботов: сигнал, пульт и учебный paper-run — **live Hyperliquid** (сетка ордеров — симуляция поверх live цены)
 
-1. Откройте https://cursor.com/automations/new  
-2. Подключите **этот** репозиторий  
-3. В Instructions — `automations/PROMPT.ru.md` или кратко: «Следуй скиллу crypto-chart-analysis»  
-4. Триггер: расписание или Slack  
+## Live API
 
-## Данные
+- `GET /api/market?symbol=BTC`
+- `GET /api/feeds?symbol=BTC`
 
-В Cursor Cloud VM обычно доступны OKX / Bitget / Binance Vision. Основной Binance fapi и Bybit часто недоступны по гео.
+## Для Cloud Agent
+
+```bash
+python3 .cursor/skills/decision-desk/fetch_decision_context.py --symbol BTC -o /tmp/decision_ctx.json
+```
+
+Справочные снимки: `data/decision-desk/`.
