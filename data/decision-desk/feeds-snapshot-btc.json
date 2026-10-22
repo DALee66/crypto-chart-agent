@@ -1,0 +1,323 @@
+{
+  "updatedAt": "2026-10-22T04:53:58.962Z",
+  "mode": "snapshot",
+  "symbol": "BTC",
+  "feeds": [
+    {
+      "projectId": "grid-bot",
+      "source": "hybrid",
+      "updatedAt": "2026-10-22T04:53:58.878Z",
+      "status": "ok",
+      "note": "Цена BTC — live Hyperliquid. Ордера и исполнения — симуляция на live mid.",
+      "metrics": {
+        "symbol": "BTC",
+        "marketPrice": 82860.5,
+        "fillsSimulated": 24,
+        "inventory": 0,
+        "openGridLevels": 10
+      },
+      "events": [
+        {
+          "id": "fill-mvj2ga8u-deyvo",
+          "projectId": "grid-bot",
+          "source": "hybrid",
+          "ts": "2026-10-22T04:53:58.878Z",
+          "kind": "fill",
+          "label": "Исполнение уровня сетки (симуляция)",
+          "payload": {
+            "symbol": "BTC",
+            "side": "buy",
+            "price": 82860.5,
+            "size": 0.001,
+            "fillNo": 24
+          }
+        },
+        {
+          "id": "mid-mvj2ga8u-dbu4k",
+          "projectId": "grid-bot",
+          "source": "live",
+          "ts": "2026-10-22T04:53:58.878Z",
+          "kind": "mid",
+          "label": "Рыночная цена BTC",
+          "payload": {
+            "symbol": "BTC",
+            "mid": 82860.5
+          }
+        },
+        {
+          "id": "grid-snapshot-mvj2ga8u-f72yv",
+          "projectId": "grid-bot",
+          "source": "hybrid",
+          "ts": "2026-10-22T04:53:58.878Z",
+          "kind": "grid-snapshot",
+          "label": "Сетка ордеров вокруг цены",
+          "payload": {
+            "symbol": "BTC",
+            "levels": [
+              {
+                "side": "buy",
+                "price": 81203.3,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "buy",
+                "price": 81534.7,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "buy",
+                "price": 81866.2,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "buy",
+                "price": 82197.6,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "buy",
+                "price": 82529.1,
+                "size": 0.001,
+                "status": "partial"
+              },
+              {
+                "side": "sell",
+                "price": 83191.9,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "sell",
+                "price": 83523.4,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "sell",
+                "price": 83854.8,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "sell",
+                "price": 84186.3,
+                "size": 0.001,
+                "status": "open"
+              },
+              {
+                "side": "sell",
+                "price": 84517.7,
+                "size": 0.001,
+                "status": "open"
+              }
+            ],
+            "inventory": 0
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "market-maker-bot",
+      "source": "hybrid",
+      "updatedAt": "2026-10-22T04:53:58.419Z",
+      "status": "ok",
+      "note": "eth_gasPrice — live public Ethereum RPC. Полосы ордеров — симуляция keeper bands.",
+      "metrics": {
+        "gasGwei": 0.088,
+        "spreadBps": 18,
+        "bandMid": 1,
+        "archivedKeeper": true
+      },
+      "events": [
+        {
+          "id": "gas-mvj2g9w3-o4hvg",
+          "projectId": "market-maker-bot",
+          "source": "live",
+          "ts": "2026-10-22T04:53:58.419Z",
+          "kind": "gas",
+          "label": "Ethereum gas price",
+          "payload": {
+            "gwei": 0.088,
+            "provider": "ethereum.publicnode.com"
+          }
+        },
+        {
+          "id": "bands-mvj2g9w3-01iq6",
+          "projectId": "market-maker-bot",
+          "source": "simulated",
+          "ts": "2026-10-22T04:53:58.419Z",
+          "kind": "bands",
+          "label": "Liquidity bands snapshot",
+          "payload": {
+            "bands": [
+              {
+                "side": "buy",
+                "minMargin": 0.5,
+                "avgMargin": 1,
+                "maxMargin": 1.5,
+                "amount": 1200
+              },
+              {
+                "side": "sell",
+                "minMargin": 0.5,
+                "avgMargin": 1,
+                "maxMargin": 1.5,
+                "amount": 1100
+              }
+            ],
+            "spreadBps": 18
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "trading-toolkit",
+      "source": "live",
+      "updatedAt": "2026-10-22T04:53:58.962Z",
+      "status": "ok",
+      "note": "Сигнал по live свечам Hyperliquid 15m и контексту BTC (RSI/MACD/Stoch + funding/премия).",
+      "metrics": {
+        "symbol": "BTC",
+        "marketPrice": 82860.5,
+        "score": 0.492,
+        "signal": "HOLD",
+        "rsi": 13.7,
+        "macdHistogram": -17.0728,
+        "stochasticK": 13,
+        "dayChangePct": 0.08,
+        "signalsEmitted": 0
+      },
+      "events": [
+        {
+          "id": "ai-signal-mvj2gab6-hx6bb",
+          "projectId": "trading-toolkit",
+          "source": "live",
+          "ts": "2026-10-22T04:53:58.962Z",
+          "kind": "ai-signal",
+          "label": "Сигнал HOLD · BTC",
+          "payload": {
+            "score": 0.492,
+            "signal": "HOLD",
+            "indicators": {
+              "rsi": 13.7,
+              "macdHist": -17.0728,
+              "stochK": 13
+            },
+            "market": {
+              "mid": 82860.5,
+              "fundingAnnPct": 11,
+              "premiumBps": -0.89
+            }
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "ftui",
+      "source": "live",
+      "updatedAt": "2026-10-22T04:53:58.756Z",
+      "status": "ok",
+      "note": "Пульт рынка по BTC: live Hyperliquid (цена, OI, funding, оборот, ход последней свечи). Не аккаунт Freqtrade — для FT задайте FREQTRADE_API_URL.",
+      "metrics": {
+        "symbol": "BTC",
+        "marketPrice": 82860.5,
+        "dayChangePct": 0.08,
+        "openInterest": 40080.48,
+        "fundingAnnPct": 11,
+        "dayVolumeUsd": 2835603084,
+        "lastBarMovePct": 0.112,
+        "recentBaseVolume": 18716.16,
+        "health": "спокойный"
+      },
+      "events": [
+        {
+          "id": "dashboard-mvj2ga5g-j8hks",
+          "projectId": "ftui",
+          "source": "live",
+          "ts": "2026-10-22T04:53:58.756Z",
+          "kind": "dashboard",
+          "label": "Мониторинг рынка · BTC",
+          "payload": {
+            "mid": 82860.5,
+            "mark": 82855,
+            "openInterest": 40080.48358,
+            "fundingAnnPct": 11,
+            "dayVolumeUsd": 2835603083.7501388,
+            "lastBarMovePct": 0.112
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "bot-academy",
+      "source": "live",
+      "updatedAt": "2026-10-22T04:53:58.659Z",
+      "status": "ok",
+      "note": "Учебный paper-run на реальных свечах BTC 15m: вход на закрытии бара, выход на следующем (always-enter long). Wins/losses — по фактическому пути цены.",
+      "metrics": {
+        "symbol": "BTC",
+        "marketPrice": 82860.5,
+        "side": "long",
+        "dryRunCycle": 42,
+        "tradesAnalyzed": 192,
+        "wins": 100,
+        "losses": 92,
+        "winRatePct": 52.1,
+        "paperPnlPct": 1,
+        "fundingAnnPct": 11,
+        "nextFilter": "none"
+      },
+      "events": [
+        {
+          "id": "dry-run-mvj2ga2r-7tnr8",
+          "projectId": "bot-academy",
+          "source": "live",
+          "ts": "2026-10-22T04:53:58.659Z",
+          "kind": "dry-run",
+          "label": "Разбор paper-run · BTC",
+          "payload": {
+            "cycle": 42,
+            "side": "long",
+            "focusPair": "BTC-PERP",
+            "wins": 100,
+            "losses": 92,
+            "winRatePct": 52.1,
+            "paperPnlPct": 1,
+            "nextFilter": "none",
+            "lastTrades": [
+              {
+                "entry": 82919,
+                "exit": 82920,
+                "pnlPct": 0.0012059962131718907
+              },
+              {
+                "entry": 82920,
+                "exit": 82894,
+                "pnlPct": -0.03135552339604438
+              },
+              {
+                "entry": 82894,
+                "exit": 82878,
+                "pnlPct": -0.019301758872777283
+              },
+              {
+                "entry": 82878,
+                "exit": 82768,
+                "pnlPct": -0.13272521055044764
+              },
+              {
+                "entry": 82768,
+                "exit": 82861,
+                "pnlPct": 0.11236226560989754
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
