@@ -26,7 +26,6 @@ async function fetchRepoStats(
       Accept: "application/vnd.github+json",
       "User-Agent": "crypto-bot-intelligence",
     },
-    next: { revalidate: 300 },
   });
 
   if (!res.ok) {

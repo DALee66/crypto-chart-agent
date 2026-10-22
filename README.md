@@ -1,10 +1,12 @@
 # crypto-chart-agent · Decision Desk
 
-Дашборд и агентский контур для **данных к торговым решениям** на реальном рынке (Hyperliquid + газ Ethereum).
+Дашборд для данных к торговым решениям на реальном рынке (Hyperliquid + газ Ethereum).
+
+**Live UI (GitHub Pages):** https://dalee66.github.io/crypto-chart-agent/
 
 Учебный инструмент, **не** инвестиционный совет.
 
-## Запуск UI
+## Локальный запуск
 
 ```bash
 npm install
@@ -12,24 +14,18 @@ npm run dev
 # http://127.0.0.1:43123
 ```
 
-## Что на экране
+## Статическая сборка (как на GitHub Pages)
 
-1. Операционный срез (mid / mark / oracle) по выбранной монете  
-2. Рекомендации покупки и продажи с ближайшими целями  
-3. Риск: funding, открытый интерес, премия  
-4. Издержки: газ Ethereum  
-5. Подсказки и расшифровка атрибутов  
-6. Контуры ботов: сигнал, пульт и учебный paper-run — **live Hyperliquid** (сетка ордеров — симуляция поверх live цены)
+```bash
+rm -rf src/app/api   # если ещё есть
+GITHUB_PAGES=true npm run build
+# результат в out/
+```
 
-## Live API
-
-- `GET /api/market?symbol=BTC`
-- `GET /api/feeds?symbol=BTC`
-
-## Для Cloud Agent
+## Cloud Agent
 
 ```bash
 python3 .cursor/skills/decision-desk/fetch_decision_context.py --symbol BTC -o /tmp/decision_ctx.json
 ```
 
-Справочные снимки: `data/decision-desk/`.
+Снимки: `data/decision-desk/`.

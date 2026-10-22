@@ -38,7 +38,6 @@ async function fetchHyperliquidMids(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ type: "allMids" }),
-    next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error(`Hyperliquid HTTP ${res.status}`);
   const data = (await res.json()) as Record<string, string>;
@@ -60,7 +59,6 @@ async function fetchEthGasGwei(): Promise<number> {
       params: [],
       id: 1,
     }),
-    next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error(`ETH RPC HTTP ${res.status}`);
   const data = (await res.json()) as { result?: string; error?: unknown };
@@ -292,12 +290,11 @@ async function tryFreqtradeStatus(): Promise<Record<string, unknown> | null> {
   const pass = process.env.FREQTRADE_API_PASS ?? "";
   const auth =
     user || pass
-      ? "Basic " + Buffer.from(`${user}:${pass}`).toString("base64")
+      ? "Basic " + btoa(`${user}:${pass}`)
       : undefined;
 
   const res = await fetch(`${base}/api/v1/show_config`, {
     headers: auth ? { Authorization: auth } : undefined,
-    next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error(`Freqtrade HTTP ${res.status}`);
   return (await res.json()) as Record<string, unknown>;

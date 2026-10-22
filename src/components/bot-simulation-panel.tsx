@@ -5,7 +5,6 @@ import {
   toBusinessBotCard,
   type BusinessBotCard,
 } from "@/lib/feeds/business";
-import type { ProjectFeedSnapshot } from "@/lib/feeds/types";
 import { Bot, RefreshCw } from "lucide-react";
 
 type Props = {
@@ -23,16 +22,11 @@ export function BotSimulationPanel({ symbol }: Props) {
 
     const load = async () => {
       try {
-        const res = await fetch(
-          `/api/feeds?symbol=${encodeURIComponent(symbol)}`,
-          { cache: "no-store" }
-        );
-        const json = await res.json();
-        if (!res.ok) throw new Error(json.detail || json.error || `HTTP ${res.status}`);
+        const { collectAllFeeds } = await import("@/lib/feeds/collectors");
+        const feeds = await collectAllFeeds(symbol);
         if (cancelled) return;
-        const feeds = (json.feeds ?? []) as ProjectFeedSnapshot[];
         setCards(feeds.map((f) => toBusinessBotCard(f, symbol)));
-        setUpdatedAt(json.updatedAt ?? new Date().toISOString());
+        setUpdatedAt(new Date().toISOString());
         setError(null);
         setLoading(false);
       } catch (e) {

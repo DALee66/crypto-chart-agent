@@ -1,12 +1,13 @@
 {
-  "name": "crypto-bot-intelligence",
+  "name": "crypto-chart-agent",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --port 43123",
     "build": "next build",
     "start": "next start --port 43123",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:pages": "GITHUB_PAGES=true npm run build"
   },
   "dependencies": {
     "clsx": "^2.1.1",

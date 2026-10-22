@@ -70,16 +70,10 @@ export function DecisionDashboard() {
 
     const load = async () => {
       try {
-        const res = await fetch(
-          `/api/market?symbol=${encodeURIComponent(symbol)}`,
-          { cache: "no-store" }
-        );
-        const json = await res.json();
-        if (!res.ok) {
-          throw new Error(json.detail || json.error || `HTTP ${res.status}`);
-        }
+        const { collectMarketSnapshot } = await import("@/lib/market/realtime");
+        const json = await collectMarketSnapshot(symbol);
         if (cancelled) return;
-        setData(json as MarketSnapshot);
+        setData(json);
         setError(null);
         setConnected(true);
         setLoading(false);
